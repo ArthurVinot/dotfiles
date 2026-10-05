@@ -1,3 +1,5 @@
+README.md
+
 {{ if not .work }}
 # Work-only files
 .bash_completions
