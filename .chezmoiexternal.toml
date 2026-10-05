@@ -1,0 +1,5 @@
+# Oh my tmux! — the main tmux.conf is upstream; only tmux.conf.local is personal.
+[".config/tmux/tmux.conf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/gpakosz/.tmux/master/.tmux.conf"
+    refreshPeriod = "168h"
