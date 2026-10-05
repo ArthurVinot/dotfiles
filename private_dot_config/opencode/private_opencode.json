@@ -1,0 +1,185 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": [
+    "@openchamber/opencode-claude",
+    "@tarquinen/opencode-dcp@latest"
+  ],
+  "providers": {
+    "claude-code": {
+      "name": "Claude Code"
+    },
+    "amazon-bedrock": {
+      "settings": {
+        "region": "eu-west-3"
+      }
+    },
+    "openrouter": {
+      "models": {
+        "google/gemini-3-flash-preview": {
+          "settings": {
+            "provider": {
+              "only": [
+                "google-ai-studio"
+              ]
+            }
+          }
+        },
+        "google/gemini-3.5-flash": {
+          "settings": {
+            "provider": {
+              "only": [
+                "google-ai-studio"
+              ]
+            }
+          }
+        },
+        "google/gemini-3.5-flash-lite": {
+          "settings": {
+            "provider": {
+              "only": [
+                "google-ai-studio"
+              ]
+            }
+          }
+        },
+        "google/gemini-3.7-flash": {
+          "settings": {
+            "provider": {
+              "only": [
+                "google-ai-studio"
+              ]
+            }
+          }
+        },
+        "google/gemini-3.8-flash": {
+          "settings": {
+            "provider": {
+              "only": [
+                "google-ai-studio"
+              ]
+            }
+          }
+        },
+        "google/gemini-3.1-pro-preview": {
+          "settings": {
+            "provider": {
+              "only": [
+                "google-ai-studio"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-opus-4.6": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-opus-4.7": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-opus-4.8": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-sonnet-4.6": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-fable-5": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-sonnet-5": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-opus-5": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        },
+        "anthropic/claude-opus-5.5": {
+          "settings": {
+            "provider": {
+              "only": [
+                "amazon-bedrock"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "permissions": [
+    { "action": "external_directory", "resource": "~/Documents/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
+    { "action": "skill", "resource": "built-in-browser", "effect": "deny" },
+    { "action": "skill", "resource": "chrome-browser", "effect": "deny" },
+    { "action": "skill", "resource": "computer-use", "effect": "deny" },
+    { "action": "skill", "resource": "deep-research", "effect": "deny" },
+    { "action": "skill", "resource": "docs", "effect": "deny" },
+    { "action": "skill", "resource": "docx", "effect": "deny" },
+    { "action": "skill", "resource": "google-workspace", "effect": "deny" },
+    { "action": "skill", "resource": "import-memory", "effect": "deny" },
+    { "action": "skill", "resource": "morning", "effect": "deny" },
+    { "action": "skill", "resource": "pdf", "effect": "deny" },
+    { "action": "skill", "resource": "pptx", "effect": "deny" },
+    { "action": "skill", "resource": "xlsx", "effect": "deny" },
+    { "action": "skill", "resource": "skill-creator", "effect": "deny" }
+  ],
+  "agents": {
+    "explore": {
+      "model": "opencode-go/gpt-6-luna#low",
+      "permissions": [
+        { "action": "external_directory", "resource": "~/Documents/*", "effect": "allow" },
+        { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" }
+      ]
+    },
+    "general": {
+      "permissions": [
+        { "action": "subagent", "resource": "*", "effect": "allow" }
+      ]
+    },
+    "build": {
+      "model": "claude-code/claude-opus-5-5[1m]#medium"
+    },
+    "plan": {
+      "model": "claude-code/claude-opus-5-5[1m]#medium"
+    }
+  },
+  "lsp": true
+}

@@ -2,5 +2,10 @@
 # Work-only files
 .bash_completions
 .config/git/hooks
+.config/opencode/AGENTS.md
 .config/k9s
+.config/opencode/agents/mr-reviewer.md
+.config/opencode/commands/monitoring-triage.md
+.config/opencode/skills/fill-mr-description
+.config/opencode/skills/gitlab-comment-to-jira-issue
 {{ end }}

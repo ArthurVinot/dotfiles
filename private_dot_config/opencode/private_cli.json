@@ -1,0 +1,20 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": {
+    "name": "system",
+    "mode": "dark"
+  },
+  "keybinds": {
+    "command.palette.show": "ctrl+q"
+  },
+  "diffs": {
+    "wrap": "word",
+    "single": true
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "hide"
+  },
+  "animations": true
+}
