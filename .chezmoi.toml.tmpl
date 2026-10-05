@@ -1,0 +1,10 @@
+{{- /* Asked once on `chezmoi init`, stored in ~/.config/chezmoi/chezmoi.toml */ -}}
+{{- $profile := promptChoiceOnce . "profile" "Machine profile" (list "work" "personal") -}}
+{{- $email := promptStringOnce . "email" "Git email" (ternary "arthur.vinot@xxii.fr" "" (eq $profile "work")) -}}
+
+sourceDir = {{ .chezmoi.sourceDir | quote }}
+
+[data]
+    profile = {{ $profile | quote }}
+    work = {{ eq $profile "work" }}
+    email = {{ $email | quote }}
