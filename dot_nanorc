@@ -1,0 +1,7 @@
+## Move line up or down
+bind M-d "{cut}{up}{paste}{up}" main
+bind Sh-M-d "{cut}{down}{paste}{up}" main
+
+## ^D = duplicate line
+bind ^D "{copy}{paste}{up}" main
+
