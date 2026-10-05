@@ -1,0 +1,22 @@
+# Pycharm
+.idea/
+
+# VS Code
+.vscode
+
+# Aider
+.aider*
+!.aider.conf.yml
+!.aiderignore
+
+# Cursor
+.cursorrules
+.cursor/commands
+
+# Open Spec
+AGENTS.md
+openspec/
+
+# Dirac
+.dirac-symbol-index
+

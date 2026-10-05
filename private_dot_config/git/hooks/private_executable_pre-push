@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Require explicit approval before pushing the protected development branch.
+protected_branch=develop
+needs_approval=false
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+    if [ "$remote_ref" = "refs/heads/$protected_branch" ]; then
+        needs_approval=true
+        break
+    fi
+done
+
+[ "$needs_approval" = true ] || exit 0
+
+if [ -t 2 ] && exec 3<>/dev/tty; then
+    printf "Push to protected branch '%s'? [y/N] " "$protected_branch" >&3
+    read -r answer <&3
+    exec 3>&-
+    case "$answer" in
+        y|Y|yes|YES|Yes) exit 0 ;;
+    esac
+fi
+
+echo "Push to '$protected_branch' cancelled (explicit approval required)."
+exit 1

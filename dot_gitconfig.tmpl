@@ -1,0 +1,37 @@
+[user]
+	email = {{ .email }}
+	name = Arthur Vinot
+[credential]
+	helper = store
+[core]
+	autocrlf = input
+	excludesfile = {{ .chezmoi.homeDir }}/.global_gitignore
+	fsmonitor = true
+{{- if .work }}
+	hooksPath = {{ .chezmoi.homeDir }}/.config/git/hooks
+{{- end }}
+[alias]
+	adog = log --all --decorate --oneline --graph
+	cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d"
+	alias = config --get-regexp ^alias\\.
+	ours = "!f(){ git checkout --ours \"$1\" && git add \"$1\"; }; f"
+	theirs = "!f(){ git checkout --theirs \"$1\" && git add \"$1\"; }; f"
+	fa = fetch --all --prune
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+{{ if .work -}}
+[safe]
+	directory = {{ .chezmoi.homeDir }}/Documents/POC/gstreamer_python
+{{ end -}}
+{{ if .work -}}
+[init]
+	defaultBranch = develop
+{{ end -}}
+{{ if .work -}}
+[credential "https://gitlab.com"]
+	helper = 
+	helper = "!f() { test \"$1\" = get && echo username=oauth2 && echo \"password=${GITLAB_TOKEN:-$(pass show gitlab/laptop_push_token | head -n1)}\"; }; f"
+{{ end -}}
