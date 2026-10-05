@@ -2,4 +2,5 @@
 # Work-only files
 .bash_completions
 .config/git/hooks
+.config/k9s
 {{ end }}
