@@ -1,0 +1,155 @@
+# Packages installed by run_onchange_after_* scripts.
+# Each list has a `common` part and a `work` part (installed only when profile = work).
+# Edit a list, then `chezmoi apply` re-runs only the matching script.
+
+# Ubuntu default repos only. Third-party repos (docker, chrome, ...) are listed in README.md.
+apt:
+  common:
+    - apt-rdepends
+    - apt-transport-https
+    - arandr
+    - arbtt
+    - autoconf
+    - automake
+    - autotools-dev
+    - bison
+    - build-essential
+    - cmake
+    - curl
+    - debhelper
+    - dh-python
+    - dkms
+    - dpkg-dev
+    - exfatprogs
+    - extundelete
+    - ffmpeg
+    - flatpak
+    - flex
+    - font-manager
+    - fonts-ipafont-gothic
+    - fonts-tlwg-loma-otf
+    - fonts-unifont
+    - fonts-wqy-zenhei
+    - foremost
+    - fzf
+    - g++
+    - gawk
+    - gcc
+    - gettext
+    - git
+    - git-all
+    - git-filter-repo
+    - git-flow
+    - git-lfs
+    - gnome-software-plugin-flatpak
+    - gparted
+    - graphviz
+    - guvcview
+    - hunspell-fr
+    - jq
+    - kdenlive
+    - libavcodec-dev
+    - libavformat-dev
+    - libavutil-dev
+    - libbz2-dev
+    - libcairo2-dev
+    - libdrm-dev
+    - libffi-dev
+    - libgirepository1.0-dev
+    - libgraphviz-dev
+    - libgtk2.0-dev
+    - liblzma-dev
+    - libmpfr-dev
+    - libncurses5-dev
+    - libncursesw5-dev
+    - libreadline-dev
+    - libsqlite3-dev
+    - libssl-dev
+    - libswscale-dev
+    - libtool
+    - libxml2-dev
+    - libxmlsec1-dev
+    - libxt-dev
+    - lm-sensors
+    - locate
+    - make
+    - mediainfo-gui
+    - meson
+    - moreutils
+    - nethogs
+    - net-tools
+    - ninja-build
+    - p7zip-full
+    - pass
+    - pgcli
+    - pkg-config
+    - powertop
+    - ppa-purge
+    - progress
+    - protobuf-compiler
+    - python3-all-dev
+    - python3-pip
+    - python3-setuptools
+    - python3-tk
+    - python3-wheel
+    - python3-wxgtk4.0
+    - ripgrep
+    - sshpass
+    - sysstat
+    - tcptrack
+    - testdisk
+    - tk-dev
+    - tmux
+    - traceroute
+    - vagrant
+    - wimtools
+    - wl-clipboard
+    - xchm
+    - xvfb
+    - zlib1g-dev
+  work:
+    - gir1.2-gst-plugins-bad-1.0
+    - gir1.2-gst-plugins-base-1.0
+    - gir1.2-gst-rtsp-server-1.0
+    - gstreamer1.0-gtk3
+    - gstreamer1.0-libav
+    - gstreamer1.0-plugins-bad
+    - gstreamer1.0-plugins-ugly
+    - gstreamer1.0-python3-plugin-loader
+    - gstreamer1.0-qt5
+    - mosquitto
+    - network-manager-fortisslvpn-gnome
+    - python3-gst-1.0
+    - unixodbc
+
+brew:
+  taps:
+    - jesseduffield/lazydocker
+  common:
+    - glow
+    - jesseduffield/lazydocker/lazydocker
+    - rtk
+    - watchman
+  work:
+    - glab
+    - jira-cli
+    - oauth2l
+
+snap:
+  common:
+    - htop
+    - kolourpaint
+    - remmina
+    - vlc
+  work:
+    - mqtt-explorer
+    - mqttx
+    - postman
+    - redisinsight
+  classic:
+    - code
+    - deja-dup
+    - go
+
+flatpak:
+  - com.github.tchx84.Flatseal

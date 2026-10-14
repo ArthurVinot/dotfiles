@@ -1,0 +1,18 @@
+#!/bin/bash
+# profile: {{ .profile }}
+set -euo pipefail
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew bundle --no-upgrade --file=/dev/stdin <<EOF
+{{- range .brew.taps }}
+tap "{{ . }}"
+{{- end }}
+{{- range .brew.common }}
+brew "{{ . }}"
+{{- end }}
+{{- if .work }}
+{{- range .brew.work }}
+brew "{{ . }}"
+{{- end }}
+{{- end }}
+EOF

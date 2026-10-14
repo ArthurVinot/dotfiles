@@ -1,0 +1,21 @@
+#!/bin/bash
+# profile: {{ .profile }}
+set -euo pipefail
+
+{{ range .snap.common -}}
+snap list {{ . }} >/dev/null 2>&1 || sudo snap install {{ . }}
+{{ end -}}
+{{ if .work -}}
+{{ range .snap.work -}}
+snap list {{ . }} >/dev/null 2>&1 || sudo snap install {{ . }}
+{{ end -}}
+{{ end -}}
+{{ range .snap.classic -}}
+snap list {{ . }} >/dev/null 2>&1 || sudo snap install --classic {{ . }}
+{{ end }}
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user -y --noninteractive flathub \
+{{- range .flatpak }}
+    {{ . }} \
+{{- end }}
+    ;

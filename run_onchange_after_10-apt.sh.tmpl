@@ -1,0 +1,15 @@
+#!/bin/bash
+# profile: {{ .profile }}
+set -euo pipefail
+
+sudo apt-get update
+sudo apt-get install -y \
+{{- range .apt.common }}
+    {{ . }} \
+{{- end }}
+{{- if .work }}
+{{- range .apt.work }}
+    {{ . }} \
+{{- end }}
+{{- end }}
+    ;
