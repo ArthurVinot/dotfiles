@@ -1,0 +1,8 @@
+#!/bin/bash
+# Re-runs when the rendered mise config changes.
+# global config hash: {{ includeTemplate "private_dot_config/mise/config.toml.tmpl" . | sha256sum }}
+# home config hash: {{ include "dot_mise.toml" | sha256sum }}
+set -euo pipefail
+
+"$HOME/.local/bin/mise" trust --all "$HOME/.mise.toml" "$HOME/.config/mise/config.toml" || true
+"$HOME/.local/bin/mise" install --yes

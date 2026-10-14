@@ -1,0 +1,29 @@
+[settings]
+experimental = true
+
+[tools]
+"asdf:asdf-community/asdf-direnv" = "latest"
+
+# Runtimes (replaces pyenv + nvm); first version is the default
+python = "3.11"
+node = ["24", "22"]
+uv = "latest"
+
+# Python CLI tools (replaces pipx installs)
+"pipx:cohesion" = "latest"
+"pipx:commitizen" = "latest"
+"pipx:mini-swe-agent" = "latest"
+"pipx:poetry" = "latest"
+"pipx:python-call-graph" = "latest"
+"pipx:radon" = "latest"
+"pipx:tldr" = "latest"
+"pipx:yapf" = "latest"
+
+# Node CLI tools (replaces npm install -g)
+"npm:agent-browser" = "latest"
+"npm:dirac-cli" = "latest"
+{{- if .work }}
+
+# Work only
+"npm:confluence-cli" = "latest"
+{{- end }}
