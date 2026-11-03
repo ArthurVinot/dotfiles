@@ -1,9 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugins": [
+{{- if .work }}
     "@openchamber/opencode-claude",
+{{- end }}
     "@tarquinen/opencode-dcp@latest"
   ],
+{{- if .work }}
   "providers": {
     "claude-code": {
       "name": "Claude Code"
@@ -144,6 +147,7 @@
       }
     }
   },
+{{- end }}
   "permissions": [
     { "action": "external_directory", "resource": "~/Documents/*", "effect": "allow" },
     { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
@@ -173,12 +177,14 @@
       "permissions": [
         { "action": "subagent", "resource": "*", "effect": "allow" }
       ]
+{{- if .work }}
     },
     "build": {
       "model": "claude-code/claude-opus-5-5[1m]#medium"
     },
     "plan": {
       "model": "claude-code/claude-opus-5-5[1m]#medium"
+{{- end }}
     }
   },
   "lsp": true

@@ -15,6 +15,7 @@ stored in `~/.config/chezmoi/chezmoi.toml`. Work-only parts:
 
 - `.bashrc`: jira, kubectl/kubectx, KUBECONFIG, `pass` secrets, mssql/keploy, gcloud, `cdgl`, `oc` (`{{ if .work }}` blocks)
 - `.gitconfig`: gitlab.com credential helper (via `pass`), `safe.directory`, `defaultBranch = develop`, pre-push hook
+- opencode `opencode.json`: Claude Code plugin/provider, Bedrock, OpenRouter (Gemini, Anthropic via Bedrock), `claude-code` build/plan models
 - Files listed in `.chezmoiignore` (k9s, `~/.bash_completions`, git hooks, opencode `AGENTS.md` and work agents/skills)
 - `work:` sections of `.chezmoidata/packages.yaml`, `npm:confluence-cli` in the mise config
 
