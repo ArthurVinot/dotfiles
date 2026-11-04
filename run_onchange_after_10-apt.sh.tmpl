@@ -3,13 +3,47 @@
 set -euo pipefail
 
 sudo apt-get update
-sudo apt-get install -y \
+packages=(
 {{- range .apt.common }}
-    {{ . }} \
+    {{ . }}
 {{- end }}
 {{- if .work }}
 {{- range .apt.work }}
-    {{ . }} \
+    {{ . }}
 {{- end }}
 {{- end }}
-    ;
+)
+
+has_candidate() {
+    LC_ALL=C apt-cache policy "$1" | awk '$1 == "Candidate:" && $2 != "(none)" { found = 1 } END { exit !found }'
+}
+
+# Recent Ubuntu releases no longer distribute Vagrant. Use its upstream repo.
+if [[ " ${packages[*]} " == *" vagrant "* ]] && ! has_candidate vagrant; then
+    sudo apt-get install -y gpg
+    . /etc/os-release
+    key_file=$(mktemp)
+    trap 'rm -f "$key_file"' EXIT
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor > "$key_file"
+    sudo install -m 0644 "$key_file" /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    printf 'deb [arch=%s signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com %s main\n' "$(dpkg --print-architecture)" "${UBUNTU_CODENAME:-$VERSION_CODENAME}" |
+        sudo tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
+    sudo apt-get update
+fi
+
+resolved=()
+for package in "${packages[@]}"; do
+    if ! has_candidate "$package"; then
+        case "$package" in
+            libncurses5-dev|libncursesw5-dev) package=libncurses-dev ;;
+            p7zip-full) package=7zip ;;
+            arbtt)
+                printf 'WARNING: arbtt is unavailable in this Ubuntu release; skipping it.\n' >&2
+                continue
+                ;;
+            *) printf 'No apt candidate for %s\n' "$package" >&2; exit 1 ;;
+        esac
+    fi
+    resolved+=("$package")
+done
+sudo apt-get install -y "${resolved[@]}"

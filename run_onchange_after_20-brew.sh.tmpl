@@ -3,6 +3,12 @@
 set -euo pipefail
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Homebrew 7 requires trust for the third-party formula declared below.
+if brew command trust >/dev/null 2>&1; then
+    brew tap jesseduffield/lazydocker
+    brew trust --formula jesseduffield/lazydocker/lazydocker
+fi
 brew bundle --no-upgrade --file=/dev/stdin <<EOF
 {{- range .brew.taps }}
 tap "{{ . }}"

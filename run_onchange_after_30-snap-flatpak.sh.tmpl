@@ -11,7 +11,12 @@ snap list {{ . }} >/dev/null 2>&1 || sudo snap install {{ . }}
 {{ end -}}
 {{ end -}}
 {{ range .snap.classic -}}
+{{ if eq . "deja-dup" -}}
+# The deja-dup snap has been withdrawn; Ubuntu still packages it.
+sudo apt-get install -y deja-dup
+{{ else -}}
 snap list {{ . }} >/dev/null 2>&1 || sudo snap install --classic {{ . }}
+{{ end -}}
 {{ end }}
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install --user -y --noninteractive flathub \

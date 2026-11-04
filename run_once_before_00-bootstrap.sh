@@ -5,7 +5,7 @@ set -euo pipefail
 have() { command -v "$1" >/dev/null 2>&1 || [ -x "$2" ]; }
 
 sudo apt-get update
-sudo apt-get install -y curl git build-essential
+sudo apt-get install -y curl git build-essential unzip
 
 have mise "$HOME/.local/bin/mise" || curl -fsSL https://mise.run | sh
 

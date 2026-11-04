@@ -4,5 +4,6 @@
 # home config hash: {{ include "dot_mise.toml" | sha256sum }}
 set -euo pipefail
 
-"$HOME/.local/bin/mise" trust --all "$HOME/.mise.toml" "$HOME/.config/mise/config.toml" || true
+"$HOME/.local/bin/mise" trust "$HOME/.mise.toml"
+"$HOME/.local/bin/mise" trust "$HOME/.config/mise/config.toml"
 "$HOME/.local/bin/mise" install --yes
