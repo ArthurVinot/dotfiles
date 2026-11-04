@@ -17,6 +17,9 @@ have oh-my-posh "$HOME/.local/bin/oh-my-posh" ||
 
 [ -d "$HOME/.bun" ] || curl -fsSL https://bun.sh/install | bash
 
+have codex "$HOME/.local/bin/codex" ||
+    curl -fsSL https://chatgpt.com/codex/install.sh | sh
+
 # Install V2 on new machines and replace an existing V1 installation.
 opencode_version=$("$HOME/.opencode/bin/opencode" --version 2>/dev/null || true)
 opencode_version=${opencode_version#opencode v}

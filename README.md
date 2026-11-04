@@ -28,7 +28,7 @@ Change profile: `chezmoi init --prompt` (or edit `chezmoi.toml`), then `chezmoi 
 | Dotfiles | `dot_*`, `private_dot_config/` |
 | Package lists (apt, brew, snap, flatpak) | `.chezmoidata/packages.yaml` |
 | Runtimes (python, node), pipx/npm CLI tools, other CLI tools | `private_dot_config/mise/config.toml` |
-| Managers bootstrap (mise, brew, bun, oh-my-posh, opencode) | `run_once_before_00-bootstrap.sh` |
+| Managers and CLI bootstrap (mise, brew, bun, oh-my-posh, opencode, codex; both profiles) | `run_once_before_00-bootstrap.sh` |
 | Install scripts (re-run when their list changes) | `run_onchange_after_*.sh.tmpl` |
 | oh-my-tmux upstream config | `.chezmoiexternal.toml` |
 
