@@ -19,6 +19,7 @@ have oh-my-posh "$HOME/.local/bin/oh-my-posh" ||
 
 # Install V2 on new machines and replace an existing V1 installation.
 opencode_version=$("$HOME/.opencode/bin/opencode" --version 2>/dev/null || true)
+opencode_version=${opencode_version#opencode v}
 if [[ "$opencode_version" != 2.* ]]; then
     curl -fsSL https://opencode.ai/v2/install | bash -s -- --no-modify-path
 fi
