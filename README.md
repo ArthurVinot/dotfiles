@@ -5,7 +5,7 @@ Laptop setup (Ubuntu 22.04) managed with [chezmoi](https://chezmoi.io).
 ## New machine
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply <this-repo-url>
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply https://github.com/ArthurVinot/dotfiles.git
 ```
 
 ## Profiles
