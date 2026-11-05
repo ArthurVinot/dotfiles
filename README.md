@@ -21,6 +21,8 @@ stored in `~/.config/chezmoi/chezmoi.toml`. Work-only parts:
 
 Change profile: `chezmoi init --prompt` (or edit `chezmoi.toml`), then `chezmoi apply`.
 
+Personal OpenCode: Sol high (Build), Astra high (Plan); connect your ChatGPT/Codex account with `opencode auth login openai`.
+
 ## Layout
 
 | What | Where |
